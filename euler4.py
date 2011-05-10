@@ -18,4 +18,4 @@ for i in palindromeTxt:
 	if i == i[::-1]:
 		palindromeInt.append(int(i))
 	
-print "The maximum 3-digit palindrome is %i" % max(palindromeInt) 
+print "The maximum palindrome from 3-digit products is:  %i" % max(palindromeInt) 
