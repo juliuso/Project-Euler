@@ -18,9 +18,6 @@ factors =[]
 
 maxBound = 20
 
-#for i in xrange(start, stop):
-#	numbers.append(++i)
-
 for i in xrange(1,math.factorial(maxBound)+1,1):
 	if (i%20==0
 		and i%19==0
