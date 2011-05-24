@@ -30,4 +30,6 @@ for i in sourceList:
 		primes.append(i)
 
 print "Length of primes list: %i" % len(primes)
-print primes[10001 + 2]
+print primes[10001 + 1]
+
+#answer: 104743
