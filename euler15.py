@@ -14,6 +14,9 @@
 # I'll solve this problem through the Combinatorics approach of 40-Choose-20, hence:
 # n! / (n-r)!r!
 
+# AUTHOR: jo
+# DATE:   20-SEP-2011
+
 import math
 
 m = math
@@ -21,8 +24,5 @@ m = math
 print "The answer is: %s" % str(m.factorial(40) / ((m.factorial(40-20) * m.factorial(20))))
 
 raw_input('Press any key to continue.')
-
-# AUTHOR: jo
-# DATE:   20-SEP-2011
 		
 # ans. 137846528820
