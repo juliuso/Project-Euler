@@ -32,13 +32,6 @@
    91 71 52 38 17 14 91 43 58 50 27 29 48
  63 66 04 68 89 53 67 30 73 16 69 87 40 31
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
-"""
-
-# AUTHOR: jo
-# DATE:   24-SEP-2011
-
-maxIntInRow = []
-previousRowIndex = 0
 
 triangle = [
 			[75],\
@@ -58,24 +51,48 @@ triangle = [
 			[4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]
 			]
 
-for i in triangle:
-	if len(i) == 1:
-		maxIntInRow.append(i[0])
-		previousRowIndex = 0
-		print "PRI: %s" % previousRowIndex
-	else:
-		for j in xrange(previousRowIndex, previousRowIndex + 1):
-			if i[previousRowIndex] > i[previousRowIndex + 1]:
-				maxIntInRow.append(i[previousRowIndex])
-				previousRowIndex = j
-				print "PRI: %s" % previousRowIndex
-			else:
-				maxIntInRow.append(i[previousRowIndex + 1])
-				previousRowIndex = j + 1
-				print "PRI: %s" % previousRowIndex
+"""
+
+# AUTHOR: jo
+# DATE:   24-SEP-2011
+
+maxIntInRow = []
+previousRowIndex = 0
+
+triangle = [
+			[75],\
+		  [95, 64],\
+		[17, 47, 82],\
+	   [18, 35, 87, 10]
+			]
+
+dict = { (0,0) : triangle[0][0] }
+
+def getAnswer(y, x):
+	if dict.has_key((y,x)) == True:
+		return dict[(y,x)]
+	else: 
+		if x == 0: # for first elements in each row(y)
+			dict[(y,x)] = triangle[y][x] + getAnswer(y-1, x)
+		elif x == y: # for the last element 
+			dict[(y,x)] = triangle[y][x] + getAnswer(y-1, x-1)
+		else: # remaining non-outer edge cases
+			dict[(y,x)] = triangle[y][x] + max(triangle[y-1][x-1], triangle[y-1][x+1])
+
+for i in range(len(triangle)):
+	for j in range(len(i)):
+		print i, j
+			
+			
+"""		
+
+recursion happens twice to compare to previous values.
+
+have the code generate the dictionary for every value.
+
+to get the final answer, just iterate through the answeres in the bottom row
+and get the maximum
+
+"""
 		
-print maxIntInRow
-print "The sum of the adjacent maximum integers per row is: %i"\
-		% sum(maxIntInRow)
-		
-#ans. 1064
+#ans. 
