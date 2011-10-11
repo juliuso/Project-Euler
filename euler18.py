@@ -56,6 +56,8 @@ triangle = [
 # AUTHOR: jo
 # DATE:   24-SEP-2011
 
+#import pdb
+
 maxIntInRow = []
 previousRowIndex = 0
 
@@ -68,21 +70,27 @@ triangle = [
 
 dict = { (0,0) : triangle[0][0] }
 
+#pdb.set_trace()
 def getAnswer(y, x):
 	if dict.has_key((y,x)) == True:
 		return dict[(y,x)]
 	else: 
 		if x == 0: # for first elements in each row(y)
 			dict[(y,x)] = triangle[y][x] + getAnswer(y-1, x)
-		elif x == y: # for the last element 
+		elif x == y: # for the last element
 			dict[(y,x)] = triangle[y][x] + getAnswer(y-1, x-1)
 		else: # remaining non-outer edge cases
-			dict[(y,x)] = triangle[y][x] + max(triangle[y-1][x-1], triangle[y-1][x+1])
+			dict[(y,x)] = triangle[y][x] + max(getAnswer(y-1, x-1), getAnswer(y-1, x+1))
 
-for i in range(len(triangle)):
-	for j in range(len(i)):
-		print i, j
-			
+getAnswer(1,1)
+
+print dict
+
+"""getAnswer(3, 1)
+getAnswer(3, 2)
+getAnswer(3, 3)"""
+
+
 			
 """		
 
