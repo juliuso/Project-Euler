@@ -33,6 +33,11 @@
  63 66 04 68 89 53 67 30 73 16 69 87 40 31
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
 
+"""
+
+# AUTHOR: jo
+# DATE:   24-SEP-2011
+
 triangle = [
 			[75],\
 			[95, 64],\
@@ -51,48 +56,41 @@ triangle = [
 			[4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]
 			]
 
-"""
-
-# AUTHOR: jo
-# DATE:   24-SEP-2011
-
-#import pdb
-
-maxIntInRow = []
-previousRowIndex = 0
-
-triangle = [
-			[75],\
-		  [95, 64],\
-		[17, 47, 82],\
-	   [18, 35, 87, 10]
-			]
-
 dict = { (0,0) : triangle[0][0] }
 
-#pdb.set_trace()
 def getAnswer(y, x):
 	if dict.has_key((y,x)) == True:
 		return dict[(y,x)]
 	else: 
-		if x == 0: # for first elements in each row(y)
+		if x == 0: # first element of each row(y)
 			dict[(y,x)] = triangle[y][x] + getAnswer(y-1, x)
-		elif x == y: # for the last element
+		elif x == y: # last element of each row(y)
 			dict[(y,x)] = triangle[y][x] + getAnswer(y-1, x-1)
+		elif x == y - 1: # handles out-of-range exceptions of latter getAnswer()
+			dict[(y,x)] = triangle[y][x] + max(getAnswer(y-1, x-1), getAnswer(y-1, x))
 		else: # remaining non-outer edge cases
 			dict[(y,x)] = triangle[y][x] + max(getAnswer(y-1, x-1), getAnswer(y-1, x+1))
+	return dict[(y,x)]
 
-getAnswer(1,1)
+triangleLength = len(triangle[-1]) - 1
+
+for i in range(len(triangle[-1])):
+	getAnswer(triangleLength, i)
 
 print dict
 
-"""getAnswer(3, 1)
-getAnswer(3, 2)
-getAnswer(3, 3)"""
+"""
+problems: 
+
+odd indexes of last row return out of range errors.
 
 
+
+        *RESOLVED*
+(2,1) :  triangle[2][1] + ga(1,0) v ga(1,2)
+
+(3,2) :  triangle[3][2] + ga(2,1) v ga(2,3)
 			
-"""		
 
 recursion happens twice to compare to previous values.
 
