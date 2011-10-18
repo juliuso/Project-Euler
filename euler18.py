@@ -36,7 +36,7 @@
 """
 
 # AUTHOR: jo
-# DATE:   24-SEP-2011
+# DATE:   17-OCT-2011
 
 triangle = [
 			[75],\
@@ -56,49 +56,46 @@ triangle = [
 			[4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]
 			]
 
+# Returns last row number of any array.
+triangleLength = len(triangle[-1]) - 1
+
+# Sets the initial condition for the dictionary.
 dict = { (0,0) : triangle[0][0] }
 
+# Placeholders for the max value, and its location.
+maxInLastRow = 0
+max_Y = 0
+max_X = 0
+
+# The function doing the heavy lifting.
 def getAnswer(y, x):
+	global dict
 	if dict.has_key((y,x)) == True:
 		return dict[(y,x)]
 	else: 
-		if x == 0: # first element of each row(y)
+		if x == 0:		# First element of each row(y).
 			dict[(y,x)] = triangle[y][x] + getAnswer(y-1, x)
-		elif x == y: # last element of each row(y)
+		elif x == y:	# Last element of each row(y).
 			dict[(y,x)] = triangle[y][x] + getAnswer(y-1, x-1)
-		elif x == y - 1: # handles out-of-range exceptions of latter getAnswer()
+		else:			# Remaining non-outer edge cases
 			dict[(y,x)] = triangle[y][x] + max(getAnswer(y-1, x-1), getAnswer(y-1, x))
-		else: # remaining non-outer edge cases
-			dict[(y,x)] = triangle[y][x] + max(getAnswer(y-1, x-1), getAnswer(y-1, x+1))
 	return dict[(y,x)]
 
-triangleLength = len(triangle[-1]) - 1
-
+# This loop sets the range to iterate over all elements in the last row.
 for i in range(len(triangle[-1])):
 	getAnswer(triangleLength, i)
 
-print dict
+# Iterates through the last row to find the max, and its location.
+for i in range(len(triangle[-1])-1):
+	if dict[(triangleLength,i)] > maxInLastRow:
+		maxInLastRow = dict[(triangleLength,i)]
+		max_Y = triangleLength
+		max_X = i
 
-"""
-problems: 
+print "The maximum in the last row is %(maxInLastRow)i \
+at location (%(max_Y)i,%(max_X)i)." % \
+	{"maxInLastRow": maxInLastRow, "max_Y": max_Y, "max_X": max_X}
+				
+#ans. 1074 at (14,9)
 
-odd indexes of last row return out of range errors.
-
-
-
-        *RESOLVED*
-(2,1) :  triangle[2][1] + ga(1,0) v ga(1,2)
-
-(3,2) :  triangle[3][2] + ga(2,1) v ga(2,3)
-			
-
-recursion happens twice to compare to previous values.
-
-have the code generate the dictionary for every value.
-
-to get the final answer, just iterate through the answeres in the bottom row
-and get the maximum
-
-"""
-		
-#ans. 
+#notes: First time use of dictionary data structure, and recursion.
