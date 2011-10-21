@@ -21,30 +21,29 @@
 # 10: 1,2,5,10
 # 15: 1,3,5,15
 # 21: 1,3,7,21
-# 28: 1,2,4,7,14,28
+# 28: 	
 #
 # We can see that 28 is the first triangle number to have over five divisors.
 # What is the value of the first triangle number to have over five hundred divisors?
 
 # AUTHOR: jo
-# DATE:   18-JUL-2011
+# DATE:   20-OCT-2011
 
-# Very inefficient, but works. tested by setting numberOfDivisors = 6,
-# returning triangle number 28.
-
-# Need to ask mvx24 if there's a faster way of solving.
-
-numberOfDivisors = 500	
+numberOfDivisors = 500
 initial = 0
 while 1 > 0:
 	divisorCount = 0
 	initial += 1
 	triangle = sum(xrange(initial))
-	for i in range(1, triangle+1):
-		if triangle % i == 0:
-			divisorCount += 1
+
+	for i in range(1, int((triangle+1)**0.5)):
+		if triangle% i == 0:
+			divisorCount += 2
+		else:
+			continue
 
 	if divisorCount < numberOfDivisors:
+		print divisorCount
 		continue
 	else:
 		if divisorCount >= numberOfDivisors:
@@ -53,3 +52,10 @@ while 1 > 0:
 
 			raw_input("Press any key to continue.")
 			break
+
+#ans. 76576500, 576 divisors
+
+#notes: The key is to limit the upper-bround range of the for loop
+#to the square-root of the triangle number. Because factors come in pairs,
+#we test the lower half of the range. Values that divide without remainder
+#are counted twice to account for the corresponding pair value.
