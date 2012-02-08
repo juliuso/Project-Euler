@@ -23,7 +23,7 @@ http://projecteuler.net/problem=21
 # AUTHOR: jo
 # DATE:   08-FEB-2012
 
-amicable = [0]
+amicable = []
 
 def findDivisors(n):
     divisors = []
