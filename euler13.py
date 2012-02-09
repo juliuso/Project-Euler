@@ -22,15 +22,15 @@ f.close()
 h = []
 j = []
 for i in g:
-	i = i.rstrip('\n')
-	i = int(i)
-	h.append(i)
+    i = i.rstrip('\n')
+    i = int(i)
+    h.append(i)
 
 
 total = 0L
 for i in h:
-	i += 1
-	total += i
+    i += 1
+    total += i
 
 j.append(total)
 

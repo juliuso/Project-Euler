@@ -23,12 +23,12 @@ maxMultiple = int(math.sqrt(maxValue))
 primes = []
 
 for i in xrange(2, maxMultiple):
-	if sourceList[i]:
-		sourceList[2*i::i] = [None] * (maxValue//i - 1)
+    if sourceList[i]:
+        sourceList[2*i::i] = [None] * (maxValue//i - 1)
 
 for i in sourceList:
-	if i != None:
-		primes.append(i)
+    if i != None:
+        primes.append(i)
 
 print primes
 

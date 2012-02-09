@@ -23,11 +23,11 @@ h = list(g)
 answer = 0
 
 for i in xrange(len(h)-4):
-	currentProduct = int(h[i])*int(h[i+1])*int(h[i+2])*int(h[i+3])*int(h[i+4])
-	
-	if currentProduct > answer:
-		answer = currentProduct
-		
+    currentProduct = int(h[i])*int(h[i+1])*int(h[i+2])*int(h[i+3])*int(h[i+4])
+    
+    if currentProduct > answer:
+        answer = currentProduct
+        
 f.close()
 
 print answer

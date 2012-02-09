@@ -11,18 +11,36 @@
 #
 # http://projecteuler.net/index.php?section=problems&id=15
 
-# I'll solve this problem through the Combinatorics approach of 40-Choose-20, hence:
-# n! / (n-r)!r!
-
 # AUTHOR: jo
 # DATE:   20-SEP-2011
 
-import math
+steps = 4
 
-m = math
+grid = [[1,1,1],\
+        [1,1,1],\
+        [1,1,1]]
 
-print "The answer is: %s" % str(m.factorial(40) / ((m.factorial(40-20) * m.factorial(20))))
+paths = 0
 
-raw_input('Press any key to continue.')
-		
+def getRoutes(xTerm, yTerm):
+    path = []
+    
+    while len(path) < 4:
+        for x in grid:
+            
+    xTerm, YTerm-1
+    xTerm-1, YTerm
+
+
+"""
+[x][y]    [x+1][y]    [x+1][y+1]    [x+2][y+1]    [x+2][y+2]
+[x][y]    [x+1][y]    [x+1][y+1]    [x+1][y+2]    [x+2][y+2]
+[x][y]    [x+1][y]    [x+2][y]    [x+2][y+1]    [x+2][y+2]
+
+[x][y]    [x][y+1]    [x+1][y+1]    [x+2][y+1]    [x+2][y+2]
+[x][y]    [x][y+1]    [x+1][y+1]    [x+1][y+2]    [x+2][y+2]
+[x][y]    [x][y+1]    [x][y+2]    [x+1][y+2]    [x+2][y+2]
+"""
+
+
 # ans. 137846528820

@@ -29,23 +29,23 @@
 
 
 def chainer(n):
-	chain = [n]
-	while chain[-1] != 1:
-		if chain[-1] == 1:
-			break
-		elif chain[-1] % 2 == 0:
-			chain.append(chain[-1]/2)
-		elif chain[-1] % 2 != 0:
-			chain.append(chain[-1] * 3 + 1)
-	return chain
+    chain = [n]
+    while chain[-1] != 1:
+        if chain[-1] == 1:
+            break
+        elif chain[-1] % 2 == 0:
+            chain.append(chain[-1]/2)
+        elif chain[-1] % 2 != 0:
+            chain.append(chain[-1] * 3 + 1)
+    return chain
 
 canChain = []
 chainLength = 0
 
 for i in xrange(1,1000000):
-	if len(chainer(i)) > chainLength:
-		canChain = chainer(i)
-		chainLength = len(chainer(i))
+    if len(chainer(i)) > chainLength:
+        canChain = chainer(i)
+        chainLength = len(chainer(i))
 
 print "The highest starting number is: %i" % canChain[0]
 print "The chain is: %s" % canChain

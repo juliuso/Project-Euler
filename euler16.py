@@ -18,9 +18,9 @@ stringValue = str(value)
 valueSum = 0
 
 for i in range(len(stringValue)):
-	valueSum += int(stringValue[i])
+    valueSum += int(stringValue[i])
 
 print "The sum of %(value)d is: \n\n%(valueSum)s" % \
-		{"value": value, "valueSum": valueSum}
+        {"value": value, "valueSum": valueSum}
 
 # ans. 1366

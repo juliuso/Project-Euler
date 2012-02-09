@@ -16,18 +16,18 @@
 
 import math
 
-maxValue = 1000000
+maxValue = 2000000
 sourceList = list(range(maxValue+1))
 maxMultiple = int(math.sqrt(maxValue))
 primes = []
 
 for i in xrange(2, maxMultiple+1):
-	if sourceList[i]:
-		sourceList[2*i::i] = [None] * (maxValue//i - 1)
+    if sourceList[i]:
+        sourceList[2*i::i] = [None] * (maxValue//i - 1)
 
 for i in sourceList:
-	if i != None:
-		primes.append(i)
+    if i != None:
+        primes.append(i)
 
 print "Length of primes list: %i" % len(primes)
 print primes[10001 + 1]

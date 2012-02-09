@@ -19,19 +19,19 @@ sum = 1000
 
 for a in xrange(sum):
 
-	for b in xrange(sum):
+    for b in xrange(sum):
 
-		for c in xrange(sum):
+        for c in xrange(sum):
 
-			if (a**2) + (b**2) == (c**2):
+            if (a**2) + (b**2) == (c**2):
 
-				if a > 0:
-					if b > 0:
-						if c > 0:
-							if a + b + c == 1000:
-								print "The triangle sides are: %i, %i, %i" % a, b, c
-								print a*b*c
-								break
+                if a > 0:
+                    if b > 0:
+                        if c > 0:
+                            if a + b + c == 1000:
+                                print "The triangle sides are: %i, %i, %i" % a, b, c
+                                print a*b*c
+                                break
 
 # ans: 31875000
 # Additional conditions should be added to prevent returning
