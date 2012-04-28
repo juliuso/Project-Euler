@@ -29,45 +29,44 @@ http://projecteuler.net/problem=23
 """
 
 # AUTHOR: jo
-# DATE:   03-MAR-2012
+# DATE:   26-APR-2012
 
-start       = 1
-end         = 28123
-abundant    = []
-number_line = range(start, end + 1)
+MAX_RANGE = 28123
+abundants = []
+interval = range(1, MAX_RANGE + 1)
 
-def findDivisors(n):
-    divisors = []
-    for i in range(1, n):
-        if n % i == 0:
-            divisors.append(i)
-    return divisors
+# If number is abundant, return True.
+def isAbundant(n):
+   properDivisors = []
+   for i in xrange(1,n):
+       if n % i == 0:
+           properDivisors.append(i)
+   if n < sum(properDivisors):
+       return True
 
-def intAndSum(n):
-    divisors = findDivisors(n)
-    if sum(divisors) > n:
-        abundant.append(n)
+# If abundant, add the number to abundants[].
+def classifyInt():
+   for i in xrange(1, MAX_RANGE + 1):
+       if isAbundant(i) == True:
+           abundants.append(i)
+   return 0
 
-def main(argv=None):
-    for i in range(start, end + 1):
-        intAndSum(i)
-    
-    for i in abundant:
-        try:
-            number_line.pop(i)
-            number_line.pop(i+i)
-        except IndexError:
-            continue
-    
-    for number in range(0, len(abundant)):
-        try:
-            for base in range(0, len(abundant)):
-                number_line.pop(abundant[number] + abundant[base])
-        except IndexError:
-            continue
-    
-    print sum(number_line)
+# Sum each combination in abundants[], and remove from interval[].
+def sumAndRemove():
+   for i in xrange(len(abundants)):
+       for j in xrange(len(abundants)):
+           k = abundants[i] + abundants[j]
+           if k <= MAX_RANGE:
+               try:
+                   interval.remove(k)
+               except:
+                   continue
+           else:
+               break
+   return 0
 
-main()
+classifyInt()
+sumAndRemove()
+print sum(interval)
 
-#ans. 
+#ans. 4179871
