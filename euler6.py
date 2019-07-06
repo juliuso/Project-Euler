@@ -1,30 +1,40 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+'''
+MIT License
 
-# EULER 6
-# 
-# PROBLEM:
-# The sum of the squares of the first ten natural numbers is, 
-#     1^2 + 2^2 + ... + 10^2 = 385
-#
-# The square of the sum of the first ten natural numbers is,
-#    (1 + 2 + ... + 10)^2 = 55^2  = 3025
-#
-# Hence the difference between the sum of the squares of the first ten natural
-# numbers and the square of the sum is 3025 - 385 = 2640.
-#
-# Find the difference between the sum of the squares of the first one hundred
-# natural numbers and the square of the sum.
+Copyright (c) 2011 Julius O
 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+'''
+# https://projecteuler.net/problem=6
 # AUTHOR: jo
 # DATE:   14-MAY-2011
 
 import math
 
-squares = []
-squareOfSum = []
+if __name__ == '__main__':
 
-for i in xrange(1, 101):
-    squares.append(i**2)
-    squareOfSum.append(i)
+    squares = []
+    squareOfSum = []
 
-print sum(squareOfSum[:])**2 - sum(squares[:])
+    for i in range(1, 101):
+        squares.append(i**2)
+        squareOfSum.append(i)
+
+    print(sum(squareOfSum[:])**2 - sum(squares[:]))

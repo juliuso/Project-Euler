@@ -1,59 +1,66 @@
 #!/usr/bin/env python
+'''
+MIT License
 
-# EULER 22
-# 
-# PROBLEM: 
-"""
-Using names.txt (right click and 'Save Link/Target As...'),
-a 46K text file containing over five-thousand first names, 
-begin by sorting it into alphabetical order. Then working 
-out the alphabetical value for each name, multiply this value
-by its alphabetical position in the list to obtain a name score.
+Copyright (c) 2012 Julius O
 
-For example, when the list is sorted into alphabetical order,
-COLIN, which is worth 3 + 15 + 12 + 9 + 14 = 53, is the 938th
-name in the list. So, COLIN would obtain a score of 938 * 53 = 49714.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-What is the total of all the name scores in the file?
-"""
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+'''
+# https://projecteuler.net/problem=22
 # AUTHOR: jo
 # DATE:   14-FEB-2012
 
 import csv
 
-f = open('euler22.txt', 'rb')
-reader = csv.reader(f)
-names = []
-alphabet = []
-total_sum = []
+if __name__ == '__main__':
 
-for name in reader:
-    names.extend(name)
+    f = open('euler22.txt', 'r')
+    reader = csv.reader(f, delimiter=',')
+    names = []
+    alphabet = []
+    total_sum = []
 
-f.close()
+    for name in reader:
+        names.extend(name)
 
-# Using Python's built-in sort function to do the job.
-names = sorted(names)
+    f.close()
 
-# Processes each name in the names list.
-# Records index position and all calculations.
-def nameToNum(name):
-    name_row = names.index(name)
-    name_total = []
-    for letter in name:
-        name_total.append(alphabet.index(letter))
-    total_sum.append(sum(name_total)*(name_row + 1))
+    # Using Python's built-in sort function to do the job.
+    names = sorted(names)
 
-# Creates the array that maps letters to integer values.
-for i in range(65, 90 + 1):
-    alphabet.extend(chr(i))
-alphabet.insert(0, '*')
+    # Processes each name in the names list.
+    # Records index position and all calculations.
+    def nameToNum(name):
+        name_row = names.index(name)
+        name_total = []
+        for letter in name:
+            name_total.append(alphabet.index(letter))
+        total_sum.append(sum(name_total)*(name_row + 1))
 
-for name in names:
-    nameToNum(name)
+    # Creates the array that maps letters to integer values.
+    for i in range(65, 90 + 1):
+        alphabet.extend(chr(i))
+    alphabet.insert(0, '*')
 
-print total_sum
-print sum(total_sum)
+    for name in names:
+        nameToNum(name)
 
-#ans. 871198282
+    #print(total_sum)
+    print(sum(total_sum))
+

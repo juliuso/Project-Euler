@@ -2,7 +2,7 @@
 '''
 MIT License
 
-Copyright (c) 2011 Julius O
+Copyright (c) 2012 Julius O
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,20 +22,21 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
-# https://projecteuler.net/problem=3
-# AUTHOR: jo
-# DATE:   10-MAY-2011
+# https://projecteuler.net/problem=28
+import os
+
+#Formula: (i**2) + ((i**2)-(i-1)) + ((i**2)-2*(i-1)) + ((i**2)-3*(i-1))
+#Simplified: 4*(i**2) - (6*i) + 6
+def spiralNumbers(n):
+    answer = 0
+    for i in range(1,n):
+        if i == 1:
+            answer += i
+        elif i%2 != 0:
+            sumOfCorners = 4*i**2 - 6*i + 6
+            answer += sumOfCorners
+    return answer
 
 if __name__ == '__main__':
-
-    factor = 600851475143
-    n = 600851475143
-    i = 2
-
-    while i * i < n:
-        while n % i == 0:
-            n = n / i
-        i = i + 1
-        
-    print ("The largest prime number of " + str(factor) + str(" is ")
-        + str(n))
+    os.system('clear')
+    print(spiralNumbers(1002))

@@ -2,7 +2,7 @@
 '''
 MIT License
 
-Copyright (c) 2011 Julius O
+Copyright (c) 2012 Julius O
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,20 +22,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
-# https://projecteuler.net/problem=3
-# AUTHOR: jo
-# DATE:   10-MAY-2011
+# https://projecteuler.net/problem=29
+from datetime import datetime
 
 if __name__ == '__main__':
 
-    factor = 600851475143
-    n = 600851475143
-    i = 2
+    tick = datetime.now()
+    START= 2
+    END = 100
 
-    while i * i < n:
-        while n % i == 0:
-            n = n / i
-        i = i + 1
-        
-    print ("The largest prime number of " + str(factor) + str(" is ")
-        + str(n))
+    numbers = set()
+
+    for a in range(START, END + 1):
+        for b in range(START, END + 1):
+            numbers.add(a**b)
+
+    print(len(numbers))
+
+    tock = datetime.now()
+
+    print(tock - tick)

@@ -1,36 +1,45 @@
 #!/usr/bin/env python
+'''
+MIT License
 
-# EULER 20
-# 
-# PROBLEM: 
-"""
-n! means n  (n  1)  ...  3  2  1
+Copyright (c) 2012 Julius O
 
-For example, 10! = 10  9  ...  3  2  1 = 3628800,
-and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Find the sum of the digits in the number 100!
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-http://projecteuler.net/problem=20
-"""
-
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+'''
+# https://projecteuler.net/problem=20
 # AUTHOR: jo
 # DATE:   05-FEB-2012
 
 # NOTE: Will calculate factorial with for loop instead of using
 # math.factorial()
 
-answer = 1
-tally = 0
+if __name__ == '__main__':
 
-for i in range(100, 0, -1):
-    answer *= i
+    answer = 1
+    tally = 0
 
-answer = str(answer)
+    for i in range(100, 0, -1):
+        answer *= i
 
-for i in answer:
-    tally += int(i)
+    answer = str(answer)
 
-print tally
+    for i in answer:
+        tally += int(i)
 
-#ans. 648
+    print(tally)

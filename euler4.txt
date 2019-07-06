@@ -1,0 +1,22 @@
+A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91  99.
+Find the largest palindrome made from the product of two 3-digit numbers.
+
+1. Minimum number = 100.
+2. Maximum number = 999.
+3. Operation is * (multiplication)
+4. The operands can be the same (eg. 123 * 123)
+5. The Minimum product is 10,000
+6. The Maximum product is 998,001
+7. A palindrome can be read the same both left-to-right and right-to-left.
+
+Solution
+
+1. All possible products are calculated, and placed into a list.
+2. if list[i]==list.reverse([i]):
+	list.append(palindromes)
+
+for i in allProducts:
+	if (i==allProducts.reverse(i)):
+		palindromes.append(i)
+
+print max(palindromes)
