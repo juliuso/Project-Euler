@@ -2,7 +2,7 @@
 '''
 MIT License
 
-Copyright (c) 2012 Julius O
+Copyright (c) 2019 Julius O
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 # https://projecteuler.net/problem=28
+# AUTHOR: jo
+# DATE:   06-JUL-2019
+
 import os
 
 #Formula: (i**2) + ((i**2)-(i-1)) + ((i**2)-2*(i-1)) + ((i**2)-3*(i-1))
